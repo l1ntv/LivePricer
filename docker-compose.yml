@@ -1,0 +1,26 @@
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pricedb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  app:
+    build: ./
+    restart: on-failure
+    depends_on:
+      - postgres
+    environment:
+      # Можно передать переменные окружения, если нужно
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"  # Если есть веб-сервер (Tomcat, Jetty)
+volumes:
+  postgres_data:

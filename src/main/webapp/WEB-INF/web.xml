@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    <servlet>
+        <servlet-name>PriceServlet</servlet-name>
+        <servlet-class>ru.rsreu.lint.livepricer.servlet.LivePricerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PriceServlet</servlet-name>
+        <url-pattern>/updatePrices</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AveragePriceServlet</servlet-name>
+        <servlet-class>ru.rsreu.lint.livepricer.servlet.AveragePriceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AveragePriceServlet</servlet-name>
+        <url-pattern>/averagePrice</url-pattern>
+    </servlet-mapping>
+</web-app>
